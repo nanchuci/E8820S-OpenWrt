@@ -93,8 +93,8 @@ git clone --depth=1 -b openwrt-18.06 https://github.com/shiyu1314/luci-theme-ros
 rm -rf ../lean/luci-theme-rosy
 
 # Use immortalwrt's luci-app-netdata
-rm -rf ../lean/luci-app-netdata
-svn co https://github.com/immortalwrt/immortalwrt/trunk/package/ntlf9t/luci-app-netdata
+#rm -rf ../lean/luci-app-netdata
+#svn co https://github.com/immortalwrt/immortalwrt/trunk/package/ntlf9t/luci-app-netdata
 
 # Add tmate
 git clone --depth=1 https://github.com/project-openwrt/openwrt-tmate
@@ -124,17 +124,17 @@ git clone --depth=1 https://github.com/destan19/OpenAppFilter
 #popd
 
 # Add netdata
-pushd feeds/packages/admin
-rm -rf netdata
-svn co https://github.com/immortalwrt/packages/trunk/admin/netdata
-popd
+#pushd feeds/packages/admin
+#rm -rf netdata
+#svn co https://github.com/immortalwrt/packages/trunk/admin/netdata
+#popd
 
 # Mod zzz-default-settings
-#pushd package/lean/default-settings/files
-#sed -i '/http/d' zzz-default-settings
-#export orig_version="$(cat "zzz-default-settings" | grep DISTRIB_REVISION= | awk -F "'" '{print $2}')"
-#sed -i "s/${orig_version}/${orig_version} ($(date +"%Y-%m-%d"))/g" zzz-default-settings
-#popd
+pushd package/lean/default-settings/files
+sed -i '/http/d' zzz-default-settings
+export orig_version="$(cat "zzz-default-settings" | grep DISTRIB_REVISION= | awk -F "'" '{print $2}')"
+sed -i "s/${orig_version}/${orig_version} ($(date +"%Y-%m-%d"))/g" zzz-default-settings
+popd
 
 # Fix libssh
 #pushd feeds/packages/libs
@@ -155,9 +155,9 @@ svn co https://github.com/openwrt/packages/trunk/utils/syncthing
 popd
 
 # Fix mt76 wireless driver
-pushd package/kernel/mt76
-sed -i '/mt7662u_rom_patch.bin/a\\techo mt76-usb disable_usb_sg=1 > $\(1\)\/etc\/modules.d\/mt76-usb' Makefile
-popd
+#pushd package/kernel/mt76
+#sed -i '/mt7662u_rom_patch.bin/a\\techo mt76-usb disable_usb_sg=1 > $\(1\)\/etc\/modules.d\/mt76-usb' Makefile
+#popd
 
 # Add po2lmo
 git clone https://github.com/openwrt-dev/po2lmo.git
