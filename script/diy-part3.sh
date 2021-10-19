@@ -19,16 +19,10 @@ sed -i 's/OpenWrt/E8820S/g' package/base-files/files/bin/config_generate
 sed -i 's/OpenWrt/ZTE-E8820S-$/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
 # 修改闭源驱动2G wifi名称
-sed -i 's/OpenWrt/ZTE-E8820S-$/g' package/lean/mt/drivers/mt_wifi/files/mt7615.1.2G.dat
-#sed -i 's/OpenWrt/ZTE-E8820S-$/g' package/lean/MTK7615-DBDC-LINUX5.4/drivers/mt_wifi/files/mt7615.1.2G.dat
-sed -i 's/OpenWrt/ZTE-E8820S-$/g' package/lean/mt/drivers/mt_wifi/files/mt7615.2G.dat
-sed -i 's/OpenWRT-2.4G/ZTE-E8820S/g' package/lean/mt/drivers/mt7615d/files/lib/wifi/mt_dbdc.sh
+sed -i 's/OpenWrt_2G/ZTE-E8820S/g' package/lean/mt/drivers/mt_wifi/files/mt7603.dat
 
 # 修改闭源驱动5G wifi名称
-sed -i 's/OpenWrt_5G/ZTE-E8820S-5G-$/g' package/lean/mt/drivers/mt_wifi/files/mt7615.1.5G.dat
-#sed -i 's/OpenWrt_5G/ZTE-E8820S-5G-$/g' package/lean/MTK7615-DBDC-LINUX5.4/drivers/mt_wifi/files/mt7615.1.5G.dat
-sed -i 's/OpenWrt_5G/ZTE-E8820S-5G-$/g' package/lean/mt/drivers/mt_wifi/files/mt7615.5G.dat
-sed -i 's/OpenWRT-5G/ZTE-E8820S-5G/g' package/lean/mt/drivers/mt7615d/files/lib/wifi/mt_dbdc.sh
+sed -i 's/OpenWrt_5G/ZTE-E8820S-5G/g' package/lean/mt/drivers/mt_wifi/files/mt7612.dat
 
 # 修改内核版本为5.10
 sed -i 's/5.4/5.10/g' target/linux/ramips/Makefile
@@ -57,6 +51,14 @@ git clone --depth=1 https://github.com/Lienol/openwrt-package
 
 # Add dnsfilter
 git clone --depth=1 https://github.com/garypang13/luci-app-dnsfilter
+
+# Add OpenAppFilter
+#git clone --depth=1 https://github.com/destan19/OpenAppFilter
+
+# Add jd 
+#git clone --depth=1 https://github.com/jerrykuku/luci-app-jd-dailybonus
+git clone https://github.com/jerrykuku/node-request.git package/lean/node-request  #京东签到依赖
+git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git package/lean/luci-app-jd-dailybonus  #luci-app-jd-dailybonus[京东签到]
 
 # Add luci-app-passwall
 git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall

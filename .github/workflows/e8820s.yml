@@ -9,7 +9,7 @@
 #代码里有 name: 后面的内容随便改,冒号后面是有个空格的,如果修改固件名字就要考虑能不能显示出你想要的
 
 
-name: OpenWrt-E8820S 闭源超精简固件
+name: OpenWrt-E8820S 闭源超精简固件5.10
 
 on: 
   release:
@@ -44,7 +44,7 @@ env:
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: config/e8820s.config
   DIY_P1_SH: script/diy-part1.sh
-  DIY_P2_SH: script/diy-part2.sh
+  DIY_P2_SH: script/diy-part3.sh
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: true
@@ -164,7 +164,7 @@ jobs:
       uses: actions/upload-artifact@main
       if: steps.organize.outputs.status == 'success' && !cancelled()
       with:
-        name: E8820S-超精简
+        name: E8820S-超精简5.10
         path: ${{ env.FIRMWARE }}
 
     - name: 上传固件到奶牛快传
