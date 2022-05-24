@@ -9,7 +9,7 @@
 #代码里有 name: 后面的内容随便改,冒号后面是有个空格的,如果修改固件名字就要考虑能不能显示出你想要的
 
 
-name: OpenWrt-E8820S 闭源超精简固件5.10
+name: OpenWrt-E8820S 闭源超精简固件5.15
 
 on: 
   release:
@@ -39,7 +39,7 @@ on:
 
 
 env:
-  REPO_URL: https://github.com/nanchuci/lede1
+  REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: config/e8820s.config
@@ -164,7 +164,7 @@ jobs:
       uses: actions/upload-artifact@main
       if: steps.organize.outputs.status == 'success' && !cancelled()
       with:
-        name: E8820S-超精简5.10
+        name: E8820S-超精简5.15
         path: ${{ env.FIRMWARE }}
 
     - name: 上传固件到奶牛快传
